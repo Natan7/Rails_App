@@ -30,7 +30,7 @@
     </div>
 
     <div class="field col-sm-2">
-      <%= form.text_field :nome, id: :produto_nome, :class => "form-control", :type => "text", :placeholder=>"Nome Produto...", :pattern=>"[a-zA-Z0-9-]{0,20}", :required=>"true" %>
+      <%= form.text_field :nome, id: :produto_nome, :class => "form-control", :type => "text", :placeholder=>"Nome Produto...", :pattern=>".{0,90}", :required=>"true" %>
     </div>
 
   </div>
