@@ -1,6 +1,21 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+::selection {
+    color: black; 
+    background: yellow;
+
+}
+
+.background_image {
+    background: image-url('background.jpeg');
+    background-repeat: repeat;
+    color: white;
+}
+
 body {
   background-color: #fff;
-  color: #333;
+  color: blue;
   margin: 33px;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;

@@ -1,10 +1,6 @@
 class ProdutosController < ApplicationController
   before_action :set_produto, only: [:show, :edit, :update, :destroy]
 
-  #respond_to :html, :xml, :json 
-
-  # GET /produtos
-  # GET /produtos.json
   def index
     @produtos = Produto.all
   end
@@ -15,8 +11,8 @@ class ProdutosController < ApplicationController
 
   def resultado
     @produtos = Produto.search(params[:query])
-    #@produtos = Produto.find(params[:query])
-    #respond_with @produtos
+    #@produtos = Produto.where(["nome = :nome", { nome: nome }]).fifth
+
   end
 
   # GET /produtos/1
@@ -47,7 +43,6 @@ class ProdutosController < ApplicationController
     #   format.json { render json: @produto.errors, status: :unprocessable_entity }
     # end
     #end
-
     if @produto.save
       redirect_to @produto, :notice => 'Cadastro Realizado com Sucesso!'
     else

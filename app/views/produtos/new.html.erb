@@ -1,5 +1,18 @@
-<h1>New Produto</h1>
+<!DOCTYPE HTML>
+<html lang="pt-br">
+    <head>
+      <meta charset="utf-8">
+    </head>
+    <body class="background_image">
+		<h1><span class="glyphicon glyphicon-floppy-save"></span> New Produto</h1>
 
-<%= render 'form', produto: @produto %>
+		<br></br>
 
-<%= link_to 'Back', produtos_path %>
+		<%= render 'form', produto: @produto %>
+
+		<div class="col-sm-2">
+			<%= link_to 'Volta para Produtos', produtos_path, :class => "btn btn-primary" , :type => "button", :title => "Volta para Lista de Produtos" %>
+		</div>
+
+	</body>
+</html>

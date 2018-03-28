@@ -1,24 +1,60 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE HTML>
+<html lang="pt-br">
+    <head>
+      <meta charset="utf-8">
+    </head>
+    <body class="background_image">
 
-<p>
-  <strong>Codigo:</strong>
-  <%= @produto.codigo_id %>
-</p>
+		<h3><span class="glyphicon glyphicon-open-file"></span> Informações Sobre o Produto Cadastrado</h3>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @produto.nome %>
-</p>
+		<br></br>
 
-<p>
-  <strong>Categoria:</strong>
-  <%= @produto.categoria %>
-</p>
+		<div class="row">
 
-<p>
-  <strong>Data criacao:</strong>
-  <%= @produto.data_criacao %>
-</p>
+  			<div class="field col-sm-1">
+  				<strong> Codigo: </strong>
+		 	</div>
+		  	<div class="field col-sm-2">
+		   		<%= text_field_tag :query, params[:query], :class => "form-control", :type => "text", :value=>@produto.codigo_id, :readonly=>"true" %>
+		  	</div>
 
-<%= link_to 'Edit', edit_produto_path(@produto) %> |
-<%= link_to 'Back', produtos_path %>
+		  	<div class="col-sm-1"></div>
+		  	
+		  	<div class="field col-sm-1">
+		  		<strong> Nome: </strong>
+		  	</div>
+		  	<div class="field col-sm-2">
+		   		<%= text_field_tag :query, params[:query], :class => "form-control", :type => "text", :value=>@produto.nome, :readonly=>"true" %>
+		  	</div>
+		</div>
+
+		<div class="row">
+
+  			<div class="field col-sm-1">
+  				<strong>Categoria:</strong>
+  			</div>
+  			<div class="field col-sm-2">
+   				<%= text_field_tag :query, params[:query], :class => "form-control", :type => "text", :value=>@produto.categoria, :readonly=>"true" %>
+  			</div>
+
+  			<div class="col-sm-1"></div>
+  				<div class="field col-sm-1">
+  					<strong>Data criacao:</strong>
+  				</div>
+  			<div class="field col-sm-2">
+   				<%= text_field_tag :query, params[:query], :class => "form-control", :type => "text", :value=>@produto.data_criacao, :readonly=>"true" %>
+  			</div>
+
+		</div>
+
+		<div class="col-sm-2"></div>
+		
+		<div class="col-sm-2">
+			<%= link_to 'Editar o Produto', edit_produto_path(@produto), :class => "btn btn-warning" , :type => "button", :title => "Editar Produto" %>
+		</div>
+		<div class="col-sm-2">
+			<%= link_to 'Volta para Produtos', produtos_path, :class => "btn btn-primary" , :type => "button", :title => "Volta para Lista de Produtos" %>
+		</div>
+
+	</body>
+</html>

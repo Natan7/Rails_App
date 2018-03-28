@@ -1,14 +1,61 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>RailsApp</title>
-    <%= csrf_meta_tags %>
+<!DOCTYPE HTML>
+<html lang="pt-br">
+    <head>
+      <meta charset="utf-8">
+      <title>RailsApp - Lista de Produtos</title>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+      <!-- Rails generate-->
+      <%= csrf_meta_tags %>
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-  <body>
-    <%= yield %>
-  </body>
+      <%= favicon_link_tag asset_path('favicon.png'), :rel => 'icon', :type =>  'image/png' %>
+
+    </head>
+
+    <body>
+      <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="produtos"> 
+              <span class="glyphicon glyphicon-tasks"></span> Home
+            </a>
+          </div>
+          <ul class="nav navbar-nav">
+          <li><a>  Buscar</a></li>
+          </ul>
+
+          <!-- Busca com Rails -->
+          <%= form_tag resultado_path , :class => 'navbar-form navbar-left', :method => 'post' do %>  
+            <div class="input-group">
+              <%= text_field_tag :query, params[:query], :class => "form-control", :type => "text", :placeholder=>"Pesquisar Nome Produto...", :pattern=>".{0,}", :required=>"true" %>
+              <div class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                  <i class="glyphicon glyphicon-search"></i>
+                </button>
+              </div>
+            </div>
+          <%end%> 
+
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="/sobre"><span class="glyphicon glyphicon-info-sign"></span>  Sobre</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <%= yield %>
+
+      <br></br>
+
+      <!-- Confirma ação como bem sucedida -->
+      <div>
+        <% if notice.present? %>
+          <%= render partial: "snippets/notice_banner", :'data-target'=>"#exampleModal", :'data-toggle'=>"modal" %>
+        <% end %>
+      </div>
+
+    </body>
 </html>
+
+
+

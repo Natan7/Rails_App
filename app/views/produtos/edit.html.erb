@@ -1,6 +1,24 @@
-<h1>Editing Produto</h1>
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head></head>
+	<body class="background_image">
 
-<%= render 'form', produto: @produto %>
+		<h1><span class="glyphicon glyphicon-pencil"></span>  Editando Produto</h1>
 
-<%= link_to 'Show', @produto %> |
-<%= link_to 'Back', produtos_path %>
+		<br></br>
+
+		<%= render 'form', produto: @produto %>
+
+		<div class="col-sm-1">
+			<%= link_to 'Volta para Produtos', produtos_path, :class => "btn btn-primary" , :type => "button", :title => "Volta para Lista de Produtos" %>
+		</div>
+
+		<div class="row col-sm-1"></div>
+
+		<div class="row col-sm-1">
+			<%= link_to 'Mostrar Produto', @produto, :class => "btn btn-info" , :type => "button", :title => "Mostrar Lista de Produtos" %>
+		</div>
+
+	</body>
+
+</html>

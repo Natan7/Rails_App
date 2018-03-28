@@ -1,37 +1,68 @@
+
+<!-- Coletor de erros -->
 <%= form_with(model: produto, local: true) do |form| %>
-  <% if produto.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(produto.errors.count, "error") %> prohibited this produto from being saved:</h2>
+    <% if produto.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(produto.errors.count, "error") %> prohibited this produto from being saved:</h2>
+        <ul>
+        <% produto.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-      <% produto.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+
+  <!-- Form com os respequitivos padrões -->
+  <div class="row">
+
+    <div class="field col-sm-1">
+      <%= form.label :codigo_id %> 
     </div>
-  <% end %>
+    <div class="field col-sm-2">
+      <%= form.number_field :codigo_id, id: :produto_codigo_id, :class => "form-control", :type => "number", :placeholder=>"Codigo do Produto...", :min=>"0", :max=>"9999", :pattern=>".{0,}", :required=>"true" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :codigo_id %>
-    <%= form.number_field :codigo_id, id: :produto_codigo_id %>
-  </div>
+    <div class="col-sm-1"></div>
 
-  <div class="field">
-    <%= form.label :nome %>
-    <%= form.text_field :nome, id: :produto_nome %>
-  </div>
+    <div class="field col-sm-1">
+      <%= form.label :nome %>
+    </div>
 
-  <div class="field">
-    <%= form.label :categoria %>
-    <%= form.text_field :categoria, id: :produto_categoria %>
-  </div>
+    <div class="field col-sm-2">
+      <%= form.text_field :nome, id: :produto_nome, :class => "form-control", :type => "text", :placeholder=>"Nome Produto...", :pattern=>"[a-zA-Z0-9-]{0,20}", :required=>"true" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :data_criacao %>
-    <%= form.date_select :data_criacao, id: :produto_data_criacao %>
   </div>
+  <div class="row">
 
-  <div class="actions">
-    <%= form.submit %>
+    <div class="field col-sm-1">
+      <%= form.label :categoria %>
+    </div>
+    <div class="field col-sm-2">
+      <%= form.text_field :categoria, id: :produto_categoria, :class => "form-control", :type => "text", :placeholder=>"Categoria Produto...", :pattern=>".{0,100}", :required=>"true" %>
+    </div>
+
+    <div class="col-sm-1"></div>
+   
+    <% if @produto.data_criacao.present? %> 
+      <div class="field col-sm-1">
+        <%= form.label :data_criacao %>
+      </div>
+      <div class="field col-sm-2">
+        <%= text_field_tag :query, params[:query], :class => "form-control", :type => "text", :value=>@produto.data_criacao, :readonly=>"true" %>
+      </div>
+    <% else %>
+      <div class="field col-sm-1" hidden="true">
+        <%= form.date_select :data_criacao, id: :produto_data_criacao, :class => "form-control", :type => "date", :pattern=>".{0,}", :required=>"true" %>
+      </div>
+    <% end %>
+      
   </div>
+            
+  <div class="col-sm-1"></div>
+    <div class="actions col-sm-2">
+      <%= form.submit "Registrar Dados do Produto", :class => "btn btn-success", :type => "submit" %>
+    </div>
+
 <% end %>

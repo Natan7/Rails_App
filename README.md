@@ -49,3 +49,4 @@ Things you may want to cover:
 
 Ruby on Rails is released under the [MIT License](https://opensource.org/licenses/MIT).
 
+5. Heroku not implemented!
